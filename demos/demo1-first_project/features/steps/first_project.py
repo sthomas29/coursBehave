@@ -12,7 +12,7 @@ logger.setLevel(logging.INFO)
 formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 
 # Création du handler (gestionnaire de sortie)
-file_handler = logging.FileHandler('demo2_parametres.log', mode='a', encoding='utf-8')
+file_handler = logging.FileHandler('demo3_dataTable.log', mode='a', encoding='utf-8')
 file_handler.setLevel(logging.DEBUG)  # Niveau de log minimum à enregistrer dans le fichier
 file_handler.setFormatter(formatter)
 
@@ -41,9 +41,18 @@ def deplacer_dans_repertoire(context, path):
 
 @when("J'affiche le contenu avec {cmd}")
 def affiche_contenu(context, cmd):
+
+    #print(f"Nb enregistrements Table : {context.table}")
+
     print(f"P: J'affiche le contenu avec {cmd}")
     logger.info(f"J'affiche le contenu avec {cmd}")
-    time.sleep(2)
+
+    # Le contenu du tableau est stocké dans la variable 'table' du 'contexte'
+    for row in context.table:
+        logger.info(f"J'affiche la ligne {row['Type']} {row['Nom']}")
+        time.sleep(1)
+
+    time.sleep(1)
 
 @when("Je regarde le contenu du répertoire")
 def regarde_contenu(context):
