@@ -12,14 +12,14 @@ logger.setLevel(logging.INFO)
 formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 
 # Création du handler (gestionnaire de sortie)
-file_handler = logging.FileHandler('demo3_dataTable.log', mode='a', encoding='utf-8')
+file_handler = logging.FileHandler('demo4_scenario_outline.log', mode='a', encoding='utf-8')
 file_handler.setLevel(logging.DEBUG)  # Niveau de log minimum à enregistrer dans le fichier
 file_handler.setFormatter(formatter)
 
 # Ajout du handler au logger
 logger.addHandler(file_handler)
 
-@given("J'ouvre mon terminal {shell}")
+@given(u"J'ouvre mon terminal {shell}")
 def open_terminal(context, shell):
 
     # Récupération de la valeur transmise dans le fichier Guerkin
@@ -33,7 +33,7 @@ def open_terminal(context, shell):
 
     time.sleep(2)
 
-@when("Je me déplace dans le répertoire {path}")
+@when(u"Je me déplace dans le répertoire {path}")
 def deplacer_dans_repertoire(context, path):
     print(f"P: Je me déplace dans le répertoire {path}")
     logger.info(f"Je me déplace dans le répertoire {path}")
