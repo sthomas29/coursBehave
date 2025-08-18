@@ -5,9 +5,9 @@ Feature: Mon Premier projet BDD
 
   Scenario: Test de mon premier scénario
 
-    Given J'ouvre mon terminal
-    When Je me déplace dans le répertoire /home/sthomas
+    Given J'ouvre mon terminal "Powershell"
+    When Je me déplace dans le répertoire "/home/sthomas"
     # And J'affiche le contenu avec 'dir'
-    And J'affiche le contenu avec 'ls -la'
+    And J'affiche le contenu avec "ls -la"
     And Je regarde le contenu du répertoire
     Then Je ferme le répertoire

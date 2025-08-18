@@ -12,29 +12,37 @@ logger.setLevel(logging.INFO)
 formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 
 # Création du handler (gestionnaire de sortie)
-file_handler = logging.FileHandler('first_project.log', mode='a', encoding='utf-8')
+file_handler = logging.FileHandler('demo2_parametres.log', mode='a', encoding='utf-8')
 file_handler.setLevel(logging.DEBUG)  # Niveau de log minimum à enregistrer dans le fichier
 file_handler.setFormatter(formatter)
 
 # Ajout du handler au logger
 logger.addHandler(file_handler)
 
-@given("J'ouvre mon terminal")
-def open_terminal(context):
-    print("P: J'ouvre mon terminal")
-    logger.info("J'ouvre mon terminal")
+@given("J'ouvre mon terminal {shell}")
+def open_terminal(context, shell):
+
+    # Récupération de la valeur transmise dans le fichier Guerkin
+    # dans la  variable 'shell'
+
+    # Remplacement des guillemets doubles par une chaine vide ""
+    shell = shell.replace('"', "")
+
+    print(f"P: J'ouvre mon terminal {shell}")
+    logger.info(f"J'ouvre mon terminal {shell}")
+
     time.sleep(2)
 
-@when("Je me déplace dans le répertoire /home/sthomas")
-def deplacer_dans_repertoire(context):
-    print("P: Je me déplace dans le répertoire /home/sthomas")
-    logger.info("Je me déplace dans le répertoire /home/sthomas")
+@when("Je me déplace dans le répertoire {path}")
+def deplacer_dans_repertoire(context, path):
+    print(f"P: Je me déplace dans le répertoire {path}")
+    logger.info(f"Je me déplace dans le répertoire {path}")
     time.sleep(2)
 
-@when("J'affiche le contenu avec 'ls -la'")
-def affiche_contenu(context):
-    print("P: J'affiche le contenu avec 'ls -la'")
-    logger.info("J'affiche le contenu avec 'ls -la'")
+@when("J'affiche le contenu avec {cmd}")
+def affiche_contenu(context, cmd):
+    print(f"P: J'affiche le contenu avec {cmd}")
+    logger.info(f"J'affiche le contenu avec {cmd}")
     time.sleep(2)
 
 @when("Je regarde le contenu du répertoire")
