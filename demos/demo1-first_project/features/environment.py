@@ -33,7 +33,7 @@ def before_all(context):
     formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 
     # Création du handler (gestionnaire de sortie)
-    file_handler = logging.FileHandler('demo7_hooks.log', mode='a', encoding='utf-8')
+    file_handler = logging.FileHandler('logs/demo7_hooks.log', mode='a', encoding='utf-8')
     file_handler.setLevel(logging.DEBUG)  # Niveau de log minimum à enregistrer dans le fichier
     file_handler.setFormatter(formatter)
 
