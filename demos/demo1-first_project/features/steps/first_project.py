@@ -57,7 +57,7 @@ def affiche_contenu(context, cmd):
 @when("Je regarde le contenu du répertoire")
 def regarde_contenu(context):
     print("P: Je regarde le contenu du répertoire")
-    context.LOGGER.error("Je regarde le contenu du répertoire")
+    context.LOGGER.error("Je regarde le contenu du répertoire avec ", context.browser)
     time.sleep(1)
 
 @then("Je ferme le répertoire")

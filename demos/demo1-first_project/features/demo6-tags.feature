@@ -11,7 +11,6 @@ Feature: Mon Premier projet BDD
 
     @demo1 @all_demos
     Scenario: Démo 1 Test de mon premier scénario avec Behave
-#        Given   Quand j'ouvre un terminal
         When    Je me déplace dans le répertoire /home/stephane.
         And     J'affiche le contenu du répertoire avec `ls -la`
         And     Je regarde le contenu

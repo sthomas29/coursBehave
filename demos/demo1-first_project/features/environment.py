@@ -3,16 +3,23 @@ import time
 import os
 from dotenv import load_dotenv
 
+TIME_MAX=1
+
+
 def before_all(context):
     print ("Avant tout")
 
     load_dotenv()
 
-    env = context.config.userdata.get("env", "pro")
+    env = context.config.userdata.get("env", "dev")
 
     if env == "dev":
         context.base_url = os.getenv("BASE_URL_DEV", "https://default.dev.com")
         context.browser = os.getenv("BROWSER_DEV", "opera")
+        #context.browser = "firefox"
+
+        # if context.browser == "firefox":
+        # context.driver = webdriver.firefox()
 
     elif env == "prod":
         context.base_url = os.getenv("BASE_URL_PROD", "https://default.prod.com")
@@ -33,7 +40,7 @@ def before_all(context):
     formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 
     # Création du handler (gestionnaire de sortie)
-    file_handler = logging.FileHandler('demo7_hooks.log', mode='a', encoding='utf-8')
+    file_handler = logging.FileHandler('demo8_env.log', mode='a', encoding='utf-8')
     file_handler.setLevel(logging.DEBUG)  # Niveau de log minimum à enregistrer dans le fichier
     file_handler.setFormatter(formatter)
 
@@ -66,11 +73,14 @@ def after_scenario(context, scenario):
 
 def before_step(context, step):
     print(f"Début step {step.name}")
+    context.step_name=step.name
 
 
 def after_step(context, step):
     print("Fin step OK")
-    time.sleep(1)
+    context.LOGGER.info(step.name)
+    time.sleep(TIME_MAX)
+    # time.sleep(1)
     print(f"Fin step {step.name}\n")
 
 
