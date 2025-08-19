@@ -1,4 +1,5 @@
 import logging
+import time
 
 
 def before_all(context):
@@ -46,8 +47,8 @@ def before_step(context, step):
 
 
 def after_step(context, step):
-    name = step.name
-    # print("Fin step : "  + name )
-    print(f"Fin step {name}")
+    print("Fin step OK")
+    time.sleep(1)
+    print(f"Fin step {step.name}\n")
 
 
