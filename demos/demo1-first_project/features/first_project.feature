@@ -27,20 +27,21 @@ Feature: Mon Premier projet BDD
     |cmd      | c:\Users\sthomas  |
     |pwsh     | PS:\Users\sthomas |
 
-
-  Scenario Outline: "Démo 5 - Manipulation du Background 1"
+  @demo51 @all-demos
+  Scenario Outline: "Démo 5-1 - Manipulation du Background 1"
 
     Examples:
       |shell    | path              |
       |bash     | /home/sthomas     |
 
-  Scenario Outline: "Démo 5 - Manipulation du Background 2"
+  @demo5-2 @all-demos
+  Scenario Outline: "Démo 5-2 - Manipulation du Background 2"
 
     Examples:
       |shell    | path              |
       |pwsh     | PS:\Users\sthomas |
 
-
-  Scenario: "Démo 5 - Manipulation du Background 3 (sans étapes complémentaires)"
+  @demo5-3 @all-demos @demo3
+  Scenario: "Démo 5-3 - Manipulation du Background 3 (sans étapes complémentaires)"
 
 
