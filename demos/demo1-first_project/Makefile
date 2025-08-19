@@ -3,6 +3,10 @@
 run:
 	@echo "Usage: make dev | make test"
 
+default:
+	@cp setup.default.cfg setup.cfg
+
+
 dev:
 	@cp setup.dev.cfg setup.cfg
 	@echo "=== Profil DEV ==="
