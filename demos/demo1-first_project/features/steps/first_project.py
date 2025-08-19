@@ -29,14 +29,14 @@ def open_terminal(context, shell):
     shell = shell.replace('"', "")
 
     print(f"P: J'ouvre mon terminal {shell}")
-    logger.info(f"J'ouvre mon terminal {shell}")
+    context.LOGGER.info(f"J'ouvre mon terminal {shell}")
 
     time.sleep(1)
 
 @when(u"Je me déplace dans le répertoire {path}")
 def deplacer_dans_repertoire(context, path):
     print(f"P: Je me déplace dans le répertoire {path}")
-    logger.debug(f"Je me déplace dans le répertoire {path}")
+    context.LOGGER.debug(f"Je me déplace dans le répertoire {path}")
     time.sleep(1)
 
 @when("J'affiche le contenu avec {cmd}")
@@ -45,7 +45,7 @@ def affiche_contenu(context, cmd):
     #print(f"Nb enregistrements Table : {context.table}")
 
     print(f"P: J'affiche le contenu avec {cmd}")
-    logger.warning(f"J'affiche le contenu avec {cmd}")
+    context.LOGGER.warning(f"J'affiche le contenu avec {cmd}")
 
     # Le contenu du tableau est stocké dans la variable 'table' du 'contexte'
     for row in context.table:
@@ -57,13 +57,11 @@ def affiche_contenu(context, cmd):
 @when("Je regarde le contenu du répertoire")
 def regarde_contenu(context):
     print("P: Je regarde le contenu du répertoire")
-    logger.error("Je regarde le contenu du répertoire")
+    context.LOGGER.error("Je regarde le contenu du répertoire")
     time.sleep(1)
 
 @then("Je ferme le répertoire")
 def ferme_repertoire(context):
     print("P: Je ferme le répertoire")
-    logger.debug("Je ferme le répertoire")
+    context.LOGGER.debug("Je ferme le répertoire")
     time.sleep(1)
-
-
